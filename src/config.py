@@ -1,0 +1,2 @@
+ORIGINAL_FILEPATH = "/home/anj/Documents/personal project/classification - credit card fraud detection/input/creditcard_2023.csv"
+CLEANED_FILEPATH = "/home/anj/Documents/personal project/classification - credit card fraud detection/input/creditcard_2023_clean.parquet"
