@@ -3,6 +3,7 @@ import time
 import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from sklearn.model_selection import cross_val_predict
+from sklearn.pipeline import Pipeline
 from tabulate import tabulate
 
 import config
@@ -23,9 +24,15 @@ def timing_decorator(func):
 
 @timing_decorator
 def train(x, y, clf_model):
-    clf = model.models.get(clf_model)
+    # use pipeline so preprocessing is done 
+    # separated between train set and val set
+    # just like the prediction
+    clf_pipeline = Pipeline([
+        ("preprocessing", model.preprocessing_pipeline),
+        ("clf", model.models.get(clf_model))
+    ])
     y_pred = cross_val_predict(
-        estimator=clf,
+        estimator=clf_pipeline,
         X=x,
         y=y,
         cv=5,
