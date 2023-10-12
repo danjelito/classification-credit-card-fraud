@@ -51,4 +51,5 @@ models = {
     "xgb": XGBClassifier(),
     "lgb": LGBMClassifier(),
     "mlp": MLPClassifier(max_iter=10_000),
+    "best_model": None
 }
